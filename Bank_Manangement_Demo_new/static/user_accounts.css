@@ -1,0 +1,124 @@
+/* Фон за страницата */
+.accounts-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #eef2f3, #8ec5fc);
+    padding: 20px;
+}
+
+/* Центриран контейнер */
+.accounts-container {
+    width: 90%;
+    max-width: 800px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Заглавие */
+.accounts-title {
+    font-size: 28px;
+    color: #3154f2;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Таблица */
+.account-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.account-actions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.account-actions .btn{
+    border-radius: 30px;
+    min-width: 100px;
+    max-width: 120px;
+    white-space: nowrap;
+}
+
+.account-table th, .account-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.account-table thead {
+    background-color: #3154f2;
+    color: white;
+}
+
+/* Бутони */
+.btn-info, .btn-success, .btn-warning, .btn-danger, .btn-primary{
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+
+.btn-info { background: #17a2b8; color: white; }
+.btn-success { background: #28a745; color: white; }
+.btn-warning { background: #ffc107; color: white; }
+.btn-danger { background: #dc3545; color: white; }
+.btn-primary { background: #007bff; color: white; }
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Мобилна адаптация */
+@media screen and (max-width: 768px) {
+    .account-actions{
+        display: block;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .account-actions .btn{
+        display: block;
+        width: 80%;
+        max-width: 220px;
+        border-radius: 30px;
+        margin: 6px auto;
+        text-align: center;
+    }
+
+    .accounts-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .accounts-title {
+        font-size: 24px;
+    }
+
+    .account-table th, .account-table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}

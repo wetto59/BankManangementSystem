@@ -1,0 +1,69 @@
+.close-account-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #eef2f3, #8ec5fc);
+    padding: 20px;
+}
+
+.close-account-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.close-account-title {
+    font-size: 28px;
+    color: #d9534f;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.warning {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #ec971f;
+}

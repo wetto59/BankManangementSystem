@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='accounts.css') }}">
+{% endblock%}
+
+{% block content %}
+<div class="accounts-page">
+    <div class="accounts-container">
+        <h1 class="accounts-title">Създаване на нова сметка</h1>
+
+        <form method="POST" class="account-form">
+            <div class="form-group">
+                <label for="account_type"><i class="fas fa-credit-card"></i> Тип на сметката:</label>
+                <select name="account_type" class="form-control" required>
+                    <option value="savings">Спестовна</option>
+                    <option value="checking">Разплащателна</option>
+                    <option value="business">Бизнес</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="currency"><i class="fas fa-coins"></i> Валута:</label>
+                <select name="currency" class="form-control" required>
+                    <option value="BGN">BGN (лв.)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="USD">USD ($)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="create-btn"><i class="fas fa-plus-circle"></i> Създай сметка</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

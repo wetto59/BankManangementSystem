@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='admin_user_accounts.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="admin-title">Сметки на потребител: {{ user.username }}</h2>
+
+    {% if accounts %}
+    <div class="table-container">
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Тип на сметката</th>
+                    <th>Баланс</th>
+                    <th>Валута</th>
+                    <th>Дата на създаване</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <td>{{ account.account_id }}</td>
+                    <td>{{ account.account_type }}</td>
+                    <td>{{ account.balance }}</td>
+                    <td>{{ account.currency }}</td>
+                    <td>{{ account.created_at.strftime('%d-%m-%Y') }}</td>
+                    <td class="action-buttons">
+                        <a href="{{ url_for('view_account', account_id=account.account_id) }}" class="btn btn-primary btn-sm">
+                            <i class="fa fa-eye"></i> Преглед
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>Този потребител все още няма създадени сметки.</p>
+    {% endif %}
+
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-back"> Назад
+    </a>
+</div>
+{% endblock %}

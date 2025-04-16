@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='close_account.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="close-account-page">
+    <div class="close-account-container">
+        <h1 class="close-account-title">Закриване на сметка</h1>
+
+        <p>IBAN: <strong>{{ account.iban }}</strong></p>
+        <p>Тип: <strong>{{ account.account_type }}</strong></p>
+        <p>Баланс: <strong>{{ account.balance }} {{ account.currency }}</strong></p>
+
+        {% if account.balance > 0 %}
+            <p class="warning">⚠ Не можете да закриете сметка с наличен баланс!</p>
+            <a href="{{ url_for('withdraw', account_id=account.account_id) }}" class="btn btn-warning">Теглене на средства</a>
+        {% else %}
+            <form method="POST">
+                <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Сигурни ли сте, че искате да закриете тази сметка?')">
+                    Потвърди закриването
+                </button>
+            </form>
+        {% endif %}
+
+        <a href="{{ url_for('user_accounts') }}" class="btn btn-secondary">Назад</a>
+    </div>
+</div>
+{% endblock %}

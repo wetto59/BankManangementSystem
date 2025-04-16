@@ -1,0 +1,165 @@
+/* Основен стил на страницата */
+.deposit-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #eef2f3, #c2e9fb);
+    padding: 20px;
+}
+
+/* Централен контейнер */
+.deposit-container {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-align: center; /* Центриране на съдържанието */
+}
+
+/* Заглавие */
+.deposit-title {
+    font-size: 26px;
+    color: #3154f2;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Информация за сметката (центрирана) */
+.account-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center; /* Центриране */
+}
+
+/* Текстът в полетата също центриран */
+.account-info p {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #333;
+    text-align: center;
+}
+
+/* Формата */
+.deposit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center; /* Центриране на съдържанието на формата */
+}
+
+/* Полета */
+.form-group {
+    width: 100%;
+    text-align: center; /* Центриране на текста */
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центриране на иконите и текста */
+    gap: 10px;
+    color: #333;
+}
+
+.form-control {
+    width: 80%;
+    max-width: 250px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    text-align: center; /* Центриране на текста в полето */
+}
+
+.form-control:focus {
+    border-color: #3154f2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(49, 84, 242, 0.2);
+}
+
+/* Центриране на бутоните */
+.button-group {
+    display: flex;
+    justify-content: center; /* Центриране на бутоните */
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Бутони с фиксиран размер */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Всички бутони с еднакъв размер */
+.btn-fixed {
+    width: 45%;
+    min-width: 160px;
+}
+
+/* Стил за бутоните */
+.btn-success {
+    background: #28a745;
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Мобилна версия */
+@media screen and (max-width: 768px) {
+    .deposit-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .deposit-title {
+        font-size: 24px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    /* За мобилни бутоните ще бъдат един до друг */
+    .button-group {
+        flex-direction: row;
+    }
+
+    /* Фиксиран размер за мобилни */
+    .btn-fixed {
+        width: 48%;
+    }
+}

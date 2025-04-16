@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finovate Bank - Управление на финансите</title>
+
+     <!-- Път към CSS файла -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+     <!-- Път към JavaScript файла -->
+     <script src="{{ url_for('static', filename='javascript.js') }}" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo"><i class="fas fa-university"></i>Finovate</div>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('index') }}">Начало</a></li>
+            <li><a href="{{ url_for('edit_profile') }}">Клиент</a></li>
+            <li><a href="{{ url_for('user_accounts')}}">Сметки</a></li>
+            <li><a href="{{ url_for('transfer')}}">Транзакции</a></li>
+            {% if session['role'] == 'admin' %}
+                 <li><a href="{{ url_for('admin_dashboard') }}">Администрация</a></li>
+            {% endif %}
+        </ul>
+        <div class="actions">
+        {% if session['logged_in'] %}
+            <span class="welcome-text">Добре дошъл, {{ session['username'] }}!</span>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Изход</a>
+        {% else %}
+        <a href="{{ url_for('register') }}" class="btn btn-outline"><i class="fa fa-user"></i>Регистрация</a>
+            <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fa fa-user"></i> Влез</a>
+        {% endif %}
+        </div>
+    </nav>
+
+
+    <!-- Банер изображение -->
+    <header class="hero">
+        <div class="hero-overlay">
+            <h1>Банковото управление никога не е било по-лесно</h1>
+            <p>Сигурност, удобство и бързи транзакции на едно място.</p>
+            <a href="{{ url_for('user_accounts') }}" class="btn">Започнете сега</a>
+        </div>
+    </header>
+
+     <!-- Основно съдържание -->
+     <div class="container main-content">
+        <h2 class="section-title" style="color: #007BFF;">Нашите услуги</h2>
+        <p class="subtitle" style="color: #007BFF;">Използвайте различни модули за управление на сметки и транзакции.</p>
+
+        <div class="cards">
+            <div class="card">
+                <i class="fa fa-user-circle card-icon"></i>
+                <h5 class="card-title" >Управление на акаунт</h5>
+                <p class="card-text">Редактирайте и изтривайте клиентски данни.</p>
+                <a href="{{ url_for('edit_profile')}}" class="btn">Виж повече</a>
+            </div>
+            <div class="card">
+                <i class="fa fa-credit-card card-icon"></i>
+                <h5 class="card-title">Управление на сметки</h5>
+                <p class="card-text">Създавайте, затваряйте и актуализирайте банкови сметки.</p>
+                <a href="{{ url_for('user_accounts')}}" class="btn">Виж повече</a>
+            </div>
+            <div class="card">
+                <i class="fa fa-exchange card-icon"></i>
+                <h5 class="card-title">Транзакции</h5>
+                <p class="card-text">Извършвайте депозити, тегления и прехвърляния.</p>
+                <a href="{{ url_for('transfer')}}" class="btn">Виж повече</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Банкова Система. Всички права запазени.</p>
+    </footer>
+</body>
+</html>

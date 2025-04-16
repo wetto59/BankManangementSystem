@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+{% endblock %}
+
+<div class="container">
+    <h2 class="admin-title">Администраторски панел</h2>
+
+    <div class="controls">
+        <input type="text" id="search" placeholder="Търсене по име, имейл или роля">
+        <select id="filterStatus">
+            <option value="">Всички статуси</option>
+            <option value="активен">Активен</option>
+            <option value="неактивен">Неактивен</option>
+        </select>
+    </div>
+
+    <div class="add-user-btn">
+        <a href="{{ url_for('add_user') }}" class="btn btn-primary">Добави потребител</a>
+    </div>
+    
+    <div class="table-container">
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Потребителско име</th>
+                    <th>Имейл</th>
+                    <th>Име</th>
+                    <th>Фамилия</th>
+                    <th>Дата на раждане</th>
+                    <th>ЕГН</th>
+                    <th>Телефонен номер</th>
+                    <th>Адрес</th>
+                    <th>Гражданство</th>
+                    <th>Статус</th>
+                    <th>Роля</th>
+                    <th>Дата на създаване на акаунта</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.date_of_birth }}</td>
+                    <td>{{ user.national_id }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.address}}</td>
+                    <td>{{ user.citizenship }}</td>
+                    <td class="{% if user.status == 'active' %}status-active{% elif user.status == 'suspended' %}status-blocked{% endif %}">
+                        {% if user.status == 'active' %}
+                            Активен
+                        {% elif user.status == 'inactive' %}
+                            Неактивен
+                        {% elif user.status == 'suspended' %}
+                            Блокиран
+                        {% else %}
+                            Неизвестен
+                        {% endif %}
+                    </td>
+                    
+                    <td>
+                        {% if user.role == 'admin' %}
+                            Администратор
+                        {% elif user.role == 'customer' %}
+                            Клиент
+                        {% else %}
+                            Неизвестна роля
+                        {% endif %}
+                    </td>
+                    
+                    <td>{{ user.created_at.strftime('%d-%m-%Y') }}</td>
+                    <td class="action-buttons">
+                        <a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn btn-warning">
+                            <i class="fa fa-edit"></i>Редакция
+                        </a>
+                        <a href="{{ url_for('confirm_delete', user_id=user.id) }}" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>Изтриване
+                        </a>
+                        <a href="{{ url_for('admin_user_accounts', user_id=user.id) }}" class="btn btn-info">
+                            <i class="fa fa-credit-card" > </i>Сметки
+                        </a>                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        {% for page in range(1, total_pages + 1) %}
+        <a href="{{ url_for('admin_dashboard', page=page) }}" class="{% if page == current_page %}active{% endif %}">
+            {{ page }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.getElementById("search").addEventListener("keyup", function () {
+        let value = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#userTable tr");
+    
+        rows.forEach(row => {
+            let text = row.innerText.toLowerCase();
+            row.style.display = text.includes(value) ? "" : "none";
+        });
+    });
+    
+    document.getElementById("filterStatus").addEventListener("change", function () {
+        let value = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#userTable tr");
+    
+        rows.forEach(row => {
+            let status = row.children[10].innerText.toLowerCase().trim(); // ⬅️ ПРАВИЛЕН ИНДЕКС
+            row.style.display = value === "" || status === value ? "" : "none";
+        });
+    });
+    
+</script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,94 @@
+/* Фон за страницата */
+.accounts-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #eef2f3, #8ec5fc);
+    padding: 20px;
+}
+
+/* Центриран контейнер */
+.accounts-container {
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заглавие */
+.accounts-title {
+    font-size: 28px;
+    color: #3154f2;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Форма */
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Полета */
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3154f2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(49, 84, 242, 0.2);
+}
+
+/* Бутон */
+.create-btn {
+    display: block;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    background: linear-gradient(90deg, #3154f2, #0036b3);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.create-btn:hover {
+    background: linear-gradient(90deg, #0036b3, #002080);
+    transform: scale(1.05);
+}

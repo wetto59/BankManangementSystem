@@ -1,0 +1,402 @@
+/* Общи настройки */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Банер секция */
+.hero {
+    background: url("/static/images/shaking.avif") no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 80px;
+}
+
+
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.hero-overlay h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero-overlay p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero-overlay .btn {
+    padding: 12px 25px;
+    font-size: 18px;
+}
+
+/* Навигационна лента */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    width: 98%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 0;
+    margin-right: auto;
+    
+    /* align-items: center;
+    flex-grow: 1; */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3154f2;
+    text-transform: uppercase;
+    padding-right: 21px;
+}
+
+/* Падащо меню за мобилни устройства */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #3154f2;
+}
+
+/* Десктоп меню */
+.nav-links {
+    display: flex;
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    left: 25%;
+    transform: translateX(-25%);
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #3154f2;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #0036b3;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Бутон за Влез */
+.actions a {
+    text-decoration: none;
+    background: linear-gradient(90deg, #3154f2, #0036b3);
+    color: white;
+    padding: 11px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.actions a:hover {
+    background: linear-gradient(90deg, #0036b3, #002080);
+}
+
+.welcome-text{
+    font-weight: bold;
+    font-size: 20px;
+    flex: 40px;
+    display: flex;
+    align-items: center;
+    color:#007bff;
+    font-weight:bold;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+/* Бутон Регистрация */
+.btn-outline,.btn-primary {
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    min-width: 100px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-outline{
+    background: white;
+    color:#3154f2;
+    border: 2px solid #3154f2;
+    height: 14px;
+}
+
+.btn-outline:hover {
+    background: #3154f2;
+    color: white;
+}
+
+.btn-primary{
+    background: linear-gradient(90deg, #3154f2, #0036b3);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #0036b3, #002080);
+}
+
+.btn-secondary {
+    text-decoration: none;
+    background: linear-gradient(90deg, #f23131, #b30000);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    transition: all 0.3 ease;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 80px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, #b30000, #800000);
+    color: white;
+    text-decoration: none;
+}
+
+
+.alert {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.alert-success {
+    background-color: #28a745;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.alert-info {
+    background-color: #17a2b8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Мобилна версия */
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        order: 1;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+        transform: none; 
+        justify-content: flex-start;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    .logo-container {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        order: 2;
+    }
+
+    .logo{
+        padding-right: 0;
+    }
+
+    .navbar{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .actions {
+        order: 3;
+        margin-right: 10px;
+    }
+
+    .actions a {
+        font-size: 14px;
+        padding: 11px 20px;
+    }
+}
+
+/* Основно съдържание */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #3154f2;
+}
+
+.section-title{
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #007BFF;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    color: #007BFF;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.card-icon{
+    font-size: 40px;
+    color: #3154f2;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #007BFF;
+}
+
+.card-text {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #007BFF;
+    /* text-align: center;
+    line-height: 1.5; */
+}
+
+.btn {
+    text-decoration: none;
+    background: linear-gradient(90deg, #3154f2, #0036b3);
+    color: white;
+    padding: 10px 17px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    /* text-align: center; */
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 30px;
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Изтриване на акаунт{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Сигурни ли сте, че искате да изтриете този акаунт?</h2>
+    <p>Това действие не може да бъде отменено.</p>
+
+    <form method="POST" action="{{ url_for('delete_user', user_id=user.id) }}">
+        <button type="submit" class="btn btn-danger">Да, изтрий</button>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Отказ</a>
+    </form>
+</div>
+{% endblock %}

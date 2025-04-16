@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='withdraw.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="withdrawal-page">
+    <div class="withdrawal-container">
+        <h1 class="withdrawal-title">Теглене от сметка</h1>
+
+        <div class="withdrawal-info">
+            <p><strong>IBAN:</strong> {{ account.iban }}</p>
+            <p><strong>Баланс:</strong> {{ account.balance }} {{ account.currency }}</p>
+        </div>
+
+        <form method="POST" class="withdrawal-form">
+            <div class="withdrawal-group">
+                <label for="amount"><i class="fas fa-money-bill-wave"></i> Въведете сума:</label>
+                <input type="number" name="amount" class="withdrawal-input" step="0.01" required>
+            </div>
+
+            <!-- Контейнер за бутоните -->
+            <div class="withdrawal-buttons">
+                <button type="submit" class="withdrawal-btn withdrawal-btn-warning withdrawal-btn-fixed"><i class="fas fa-upload"></i> Теглене</button>
+                <a href="{{ url_for('view_account', account_id=account.account_id) }}" class="withdrawal-btn withdrawal-btn-secondary withdrawal-btn-fixed"><i class="fas fa-arrow-left"></i> Назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

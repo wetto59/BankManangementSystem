@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='transfer.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="transfer-page">
+    <div class="transfer-container">
+        <h1 class="transfer-title">Извършване на превод</h1>
+
+        <form method="POST" class="transfer-form">
+            {{ form.hidden_tag() }}
+            
+            <!-- 🔹 Избор на сметка за изпращане -->
+            <div class="transfer-group">
+                <label for="sender_account_id"><i class="fas fa-wallet"></i> Изберете сметка:</label>
+                <select name="sender_account_id" required class="transfer-input">
+                    <option disabled selected>Изберете сметка</option>
+                    {% for account in sender_accounts %}
+                        <option value="{{ account.account_id }}">
+                            {{ account.iban }} (Баланс: {{ account.balance }} {{ account.currency }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="transfer-group">
+                <label for="recipient_iban"><i class="fas fa-university"></i> IBAN на получателя:</label>
+                {{ form.recipient_iban(class="transfer-input", placeholder="BG00XXXX123456789") }}
+            </div>
+
+            <div class="transfer-group">
+                <label for="amount"><i class="fas fa-money-bill-wave"></i> Сума:</label>
+                {{ form.amount(class="transfer-input", placeholder="100.00") }}
+            </div>
+
+            <div class="transfer-group">
+                <label for="description"><i class="fas fa-comment"></i> Описание (по избор):</label>
+                {{ form.description(class="transfer-input", placeholder="Например: Наем за март") }}
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="transfer-btn"><i class="fas fa-paper-plane"></i> Изпрати</button>
+                <a href="{{ url_for('user_accounts') }}" class="transfer-btn">Отказ</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

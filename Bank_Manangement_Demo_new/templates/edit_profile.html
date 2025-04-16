@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}Редакция на профил{% endblock %}
+
+{% block content %}
+<style>
+    /* Главен контейнер */
+    .profile-container {
+        max-width: 400px;
+        margin: 40px auto;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .profile-container:hover {
+        transform: scale(1.02);
+    }
+
+    h2 {
+        text-align: center;
+        color: #007BFF;;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 14px;
+        min-width: 140px;
+        color: #007BFF;;
+        text-align: right;
+    }
+
+    .form-group input {
+        flex: 1; /* 🔹 Уеднаквяване на дължината на input-а */
+        padding: 10px 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        background: #f8f8f8;
+        color: black;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-group input:focus {
+        border: 1px solid #007BFF;
+        outline: none;
+        background: #fff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+    i{
+        background-color: #007BFF;
+    }
+    .form-group i {
+        margin-right: 8px;
+        color: #007BFF;;
+        font-size: 16px;
+        margin-right: 8px;
+    }
+
+    /* Стилен бутон */
+    .btn-edit-primary {
+        display: block;
+        width: 90%;
+        padding: 10px;
+        font-size: 15px;
+        text-align: center;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        background: linear-gradient(90deg, #007BFF, #0036b3);
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+        margin: 10px auto;
+    }
+
+
+    .btn-primary:hover {
+        background: linear-gradient(90deg, #0056b3, #002080);
+        transform: scale(1.05);
+    }
+
+    /* Мобилна версия */
+    @media (max-width: 768px) {
+        .profile-container {
+            max-width: 90%;
+            padding: 20px;
+        }
+
+        .btn-primary {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="profile-container">
+    <h2>Редактиране на профила</h2>
+    <form method="POST" action="{{ url_for('edit_profile') }}">
+        <div class="form-group">
+            <label>Потребителско име:</label>
+            <i class="fas fa-user" style="color: #007BFF;"></i>
+            <input type="text" name="username" value="{{ user.username }}" required>
+        </div>
+
+        <div class="form-group"> 
+            <label>Имейл:</label>
+            <i class="fas fa-envelope" style="color: #007BFF;"></i>
+            <input type="email" name="email" value="{{ user.email }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Нова парола:</label>
+            <i class="fas fa-lock" style="color: #007BFF;"></i>
+            <input type="password" name="new_password">
+        </div> 
+
+        <div class="form-group">
+            <label>Име:</label>
+            <i class="fas fa-id-card" style="color: #007BFF;"></i>
+            <input type="text" name="first_name" value="{{ user.first_name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Фамилия:</label>
+            <i class="fas fa-id-card" style="color: #007BFF;"></i>
+            <input type="text" name="last_name" value="{{ user.last_name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Дата на раждане:</label>
+            <i class="fas fa-calendar-alt" style="color: #007BFF;"></i>
+            <input type="date" name="date_of_birth" value="{{ user.date_of_birth }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label>ЕГН:</label>
+            <i class="fas fa-address-card" style="color: #007BFF;"></i>
+            <input type="text" value="{{ user.national_id }}" disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Телефон:</label>
+            <i class="fas fa-phone" style="color: #007BFF;"></i>
+            <input type="text" name="phone_number" value="{{ user.phone_number }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Адрес:</label>
+            <i class="fas fa-map-marker-alt" style="color: #007BFF;"></i>
+            <input type="text" name="address" value="{{ user.address }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Гражданство:</label>
+            <i class="fas fa-flag" style="color: #007BFF;"></i>
+            <input type="text" name="citizenship" value="{{ user.citizenship }}" required>
+        </div>
+
+        <button type="submit" class="btn-edit-primary">Запази промените</button>
+    </form>
+</div>
+
+<!-- Включване на FontAwesome за иконите -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+{% endblock %}

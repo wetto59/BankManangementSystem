@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='user_accounts.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="accounts-page">
+    <div class="accounts-container">
+        <h1 class="accounts-title">Моите банкови сметки</h1>
+
+        <table class="account-table">
+            <thead>
+                <tr>
+                    <th>IBAN</th>
+                    <th>Тип</th>
+                    <th>Баланс</th>
+                    <th>Валута</th>
+                    <th>Дата на създаване</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <td>{{ account.iban }}</td>
+                    <td>
+                        {% if account.account_type == 'savings' %}
+                            Спестовна
+                        {% elif account.account_type == 'checking' %}
+                            Разплащателна
+                        {% elif account.account_type == 'business' %}
+                            Бизнес
+                        {% else %}
+                            Неизвестен тип
+                        {% endif %}
+                    </td>
+                    
+                    <td>{{ account.balance }}</td>
+                    <td>{{ account.currency }}</td>
+                    <td>{{ account.created_at }}</td>
+                    <td>
+                        <div class="account-actions">
+                            <a href="{{ url_for('view_account', account_id=account.account_id) }}" class="btn btn-info">Преглед</a>
+                            <a href="{{ url_for('deposit', account_id=account.account_id) }}" class="btn btn-success">Депозит</a>
+                            <a href="{{ url_for('withdraw', account_id=account.account_id) }}" class="btn btn-warning">Теглене</a>
+                            <a href="{{ url_for('close_account', account_id=account.account_id) }}" class="btn btn-danger">Закриване</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ url_for('create_account') }}" class="btn btn-create">Създай нова сметка</a>
+    </div>
+</div>
+{% endblock %}

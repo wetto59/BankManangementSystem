@@ -1,0 +1,172 @@
+.container {
+    max-width: 95%;
+    margin: 20px auto;
+    text-align: center;
+    padding-top: 70px;
+}
+
+.admin-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #007BFF;;
+}
+
+.add-user-btn {
+    margin: 20px 0; 
+    text-align: left;
+}
+
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.controls input, .controls select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.table-container{
+    overflow: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+}
+
+.add-user-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-table th, .user-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.user-table th {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.user-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.status-active {
+    color: green;
+    font-weight: bold;
+}
+
+.status-blocked {
+    color: red;
+    font-weight: bold;
+}
+
+.action-buttons {
+    text-align: center;
+}
+
+.action-buttons a {
+    display: inline-block;
+    margin: 2px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+
+.btn-sm {
+    padding: 5px 10px;
+    margin: 2px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Икони */
+.fa-edit, .fa-trash {
+    margin-right: 5px;
+}
+
+.pagination {
+    margin-top: 15px;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    margin: 3px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #007BFF;
+    color: #007BFF;
+    font-size: 14px;
+}
+
+.pagination a.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+
+/* Отзивчивост */
+@media (max-width: 768px) {
+    .user-table th, .user-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .admin-title {
+        font-size: 22px;
+    }
+
+    .action-buttons a {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}

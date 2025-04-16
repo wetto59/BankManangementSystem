@@ -1,0 +1,149 @@
+/* =========================== */
+    /* СТИЛОВЕ СПЕЦИФИЧНИ ЗА transfer.html */
+    /* =========================== */
+
+    .transfer-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(to right, #eef2f3, #8ec5fc);
+        padding: 20px;
+    }
+
+    /* Центриран контейнер */
+    .transfer-container {
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* Заглавие */
+    .transfer-title {
+        font-size: 28px;
+        color: #3154f2;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Стилове за формата */
+    .transfer-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Полета на формата */
+    .transfer-group {
+        text-align: left;
+    }
+
+    .transfer-group label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #007BFF;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+    }
+
+    .transfer-group label i {
+        margin-right: 10px;
+        font-size: 16px;
+        color: #3154f2;
+    }
+
+    .transfer-input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .transfer-input:focus {
+        border-color: #3154f2;
+        outline: none;
+        box-shadow: 0 0 8px rgba(49, 84, 242, 0.2);
+    }
+
+    /* Бутон */
+    .transfer-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 250px;
+        margin: 20px auto;
+        padding: 15px;
+        background: linear-gradient(90deg, #3154f2, #0036b3);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        margin-top: 20px;
+        text-transform: uppercase;
+    }
+    
+    .cancel-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 220px;
+        height: 20px;
+        margin: 20px auto;
+        padding: 15px;
+        background: linear-gradient(90deg, #3154f2, #0036b3);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        margin-top: 20px;
+        text-transform: uppercase;
+    }
+
+    .transfer-btn:hover {
+        background: linear-gradient(90deg, #0036b3, #002080);
+        transform: scale(1.05);
+    }
+
+    /* Иконката в бутона */
+    .transfer-btn i {
+        margin-right: 10px;
+    }
+
+    /* Мобилна адаптация */
+    @media screen and (max-width: 768px) {
+        .transfer-container {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .transfer-title {
+            font-size: 24px;
+        }
+
+        .transfer-input {
+            font-size: 14px;
+        }
+
+        .transfer-btn {
+            font-size: 16px;
+        }
+    }

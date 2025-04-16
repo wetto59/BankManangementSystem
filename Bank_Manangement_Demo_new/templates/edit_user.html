@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='edit_user.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Редактиране на потребител</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Потребителско име:</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Имейл:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="first_name" class="form-label">Име:</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Фамилия:</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="date_of_birth" class="form-label">Дата на раждане:</label>
+            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ user.date_of_birth }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="national_id" class="form-label">ЕГН:</label>
+            <input type="text" class="form-control" id="national_id" name="national_id" value="{{ user.national_id }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="phone_number" class="form-label">Телефонен номер:</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ user.phone_number }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Адрес:</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{ user.address }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="citizenship" class="form-label">Гражданство:</label>
+            <input type="text" class="form-control" id="citizenship" name="citizenship" value="{{ user.citizenship }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="status" class="form-label">Статус:</label>
+            <select class="form-select" id="status" name="status">
+                <option value="active" {% if user.status == 'active' %}selected{% endif %}>Активен</option>
+                <option value="inactive" {% if user.status == 'inactive' %}selected{% endif %}>Деактивиран</option>
+            </select>
+            
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Роля:</label>
+            <select class="form-select" id="role" name="role">
+                <option value="customer" {% if user.role == 'customer' %}selected{% endif %}>Потребител</option>
+                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Администратор</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-save">Запази промените</button>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-cancel">Отказ</a>
+    </form>
+</div>
+{% endblock %}

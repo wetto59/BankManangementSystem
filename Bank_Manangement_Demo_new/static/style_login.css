@@ -1,0 +1,129 @@
+/* Включване на новия шрифт от Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Приложение на шрифта */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #eef2f3, #c2e9fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Контейнер */
+.login-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Заглавие */
+.login-container h1 {
+    font-size: 28px;
+    color: #3154f2;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Подзаглавие */
+.login-subtitle {
+    font-size: 16px;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* Полета за въвеждане */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+    width: 90%;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif; /* Шрифт и в полетата */
+}
+
+.form-group input:focus {
+    border-color: #3154f2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(49, 84, 242, 0.2);
+}
+
+/* Бутон за вход */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    background: linear-gradient(90deg, #3154f2, #0036b3);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #0036b3, #002080);
+}
+
+/* Линк за регистрация */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.register-link a {
+    color: #3154f2;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Мобилна версия */
+@media screen and (max-width: 768px) {
+    .login-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .login-container h1 {
+        font-size: 24px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+    }
+}

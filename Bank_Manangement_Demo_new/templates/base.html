@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Finovate{% endblock %}</title>
+
+    <!-- Линк към твоя CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Блок за допълнителни стилове в различни страници -->
+    {% block styles %}{% endblock %}
+
+    <!-- Линк към иконите от FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Линк към твоя JavaScript -->
+    <script src="{{ url_for('static', filename='javascript.js') }}" defer></script>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+    <!-- Навигационно меню -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">Finovate</div>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('index') }}">Начало</a></li>
+            <li><a href="{{ url_for('edit_profile') }}">Клиенти</a></li>
+            <li><a href="{{ url_for('user_accounts')}}">Сметки</a></li>
+            <li><a href="{{ url_for('transfer')}}">Транзакции</a></li>
+            {% if session['role'] == 'admin' %}
+                 <li><a href="{{ url_for('admin_dashboard') }}">Администрация</a></li>
+            {% endif %}
+        </ul>
+        <div class="actions">
+        {% if session['logged_in'] %}
+            <span class="welcome-text">Добре дошъл, {{ session['username'] }}!</span>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Изход</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fa fa-user"></i> Влез</a>
+        {% endif %}
+        </div>
+    </nav>
+
+    <!-- Основно съдържание -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Finovate Bank. Всички права запазени.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                let flashes = document.querySelectorAll(".flash");
+                flashes.forEach(flash => {
+                    flash.classList.add("fade-out");
+                    setTimeout(() => flash.remove(), 1000); // Изтриваме след 1 секунда
+                });
+            }, 5000); // Изчезва след 5 секунди
+        });
+    </script>
+    
+</body>
+</html>

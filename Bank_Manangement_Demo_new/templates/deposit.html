@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='deposit.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="deposit-page">
+    <div class="deposit-container">
+        <h1 class="deposit-title">💰 Депозит в сметка</h1>
+
+        <div class="account-info">
+            <p><strong>IBAN:</strong> {{ account.iban }}</p>
+            <p><strong>Баланс:</strong> {{ account.balance }} {{ account.currency }}</p>
+        </div>
+
+        <form method="POST" class="deposit-form">
+            <div class="form-group">
+                <label for="amount"><i class="fas fa-money-bill-wave"></i> Въведете сума:</label>
+                <input type="number" name="amount" class="form-control" step="0.01" required>
+            </div>
+
+            <!-- Контейнер за бутоните с фиксиран размер -->
+            <div class="button-group">
+                <button type="submit" class="btn btn-success btn-fixed"><i class="fas fa-upload"></i> Депозирай</button>
+                <a href="{{ url_for('view_account', account_id=account.account_id) }}" class="btn btn-secondary btn-fixed"><i class="fas fa-arrow-left"></i> Назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
