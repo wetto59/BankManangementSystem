@@ -1,0 +1,35 @@
+USE banking_system;
+
+-- 🔹 Добавяне на потребители
+INSERT INTO users (username, email, password_hash, first_name, last_name, date_of_birth, national_id, phone_number, address, citizenship, status, role)
+VALUES 
+('admin1', 'admin@example.com', '$2b$12$adminadminhash', 'Иван', 'Иванов', '1985-05-12', '8505121234', '0888123456', 'София, ул. Админ 1', 'България', 'active', 'admin'),
+('user1', 'user1@example.com', '$2b$12$user1hash', 'Мария', 'Петрова', '1992-08-22', '9208221234', '0888123457', 'Пловдив, ул. Клиент 5', 'България', 'active', 'customer'),
+('user2', 'user2@example.com', '$2b$12$user2hash', 'Георги', 'Стоянов', '1990-12-15', '9012154567', '0888123458', 'Варна, ул. Клиент 12', 'България', 'active', 'customer');
+
+-- 🔹 Добавяне на сметки
+INSERT INTO accounts (user_id, iban, balance, currency, account_type)
+VALUES 
+(1, 'BG11AAAA11111111111111', 1500.00, 'BGN', 'checking'),
+(2, 'BG22BBBB22222222222222', 3200.00, 'BGN', 'savings'),
+(3, 'BG33CCCC33333333333333', 760.50, 'EUR', 'business');
+
+-- 🔹 Добавяне на транзакции
+INSERT INTO transactions (account_id, amount, transaction_type, description)
+VALUES 
+(1, 1000.00, 'deposit', 'Начален депозит'),
+(2, 500.00, 'withdrawal', 'Теглене за ремонт'),
+(2, 100.00, 'transfer', 'Превод към Георги', 3),
+(3, 200.00, 'deposit', 'Платеж от клиент');
+
+-- 🔹 Добавяне в activity_logs
+INSERT INTO activity_logs (user_id, action)
+VALUES 
+(1, 'Създаден администраторски акаунт'),
+(2, 'Извършено теглене'),
+(3, 'Получен превод от user2');
+
+-- 🔹 Добавяне в admins
+INSERT INTO admins (user_id, permissions)
+VALUES 
+(1, 'full_access');

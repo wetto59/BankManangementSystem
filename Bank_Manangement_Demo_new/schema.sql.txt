@@ -1,0 +1,74 @@
+CREATE DATABASE IF NOT EXISTS banking_system CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE banking_system;
+
+--  USERS
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    national_id VARCHAR(20) NOT NULL UNIQUE,
+    phone_number VARCHAR(15) NOT NULL,
+    address TEXT NOT NULL,
+    citizenship VARCHAR(50) NOT NULL,
+    status ENUM('active', 'inactive', 'suspended') DEFAULT 'active',
+    role ENUM('customer', 'admin') DEFAULT 'customer',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--  ACCOUNTS
+CREATE TABLE accounts (
+    account_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    iban VARCHAR(34) NOT NULL UNIQUE,
+    balance DECIMAL(15,2) DEFAULT 0.00,
+    currency VARCHAR(3) NOT NULL DEFAULT 'BGN',
+    account_type ENUM('savings', 'checking', 'business') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+--  TRANSACTIONS
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    account_id INT NOT NULL,
+    amount DECIMAL(15,2) NOT NULL,
+    transaction_type ENUM('deposit','withdrawal','transfer') NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    description TEXT,
+    recipient_account_id INT,
+    FOREIGN KEY (account_id) REFERENCES accounts(account_id) ON DELETE CASCADE,
+    FOREIGN KEY (recipient_account_id) REFERENCES accounts(account_id)
+);
+
+--  ACTIVITY LOG
+CREATE TABLE activity_logs (
+    log_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    action VARCHAR(255) NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+--  ADMINS
+CREATE TABLE admins (
+    admin_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    permissions TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+--  CLOSED ACCOUNTS
+CREATE TABLE closed_accounts (
+    closed_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    iban VARCHAR(34) NOT NULL,
+    balance DECIMAL(15,2) DEFAULT 0.00,
+    currency VARCHAR(3) NOT NULL,
+    account_type ENUM('savings','checking','business') NOT NULL,
+    closed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
